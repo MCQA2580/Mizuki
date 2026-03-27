@@ -16,6 +16,7 @@ A modern, feature-rich static blog template built with [Astro](https://astro.bui
 
 Get started quickly with our comprehensive documentation. Whether you're customizing your theme, configuring features, or deploying to production, the documentation covers everything you need to launch your blog successfully.
 
+
 [📚 Read Full Documentation](https://docs.mizuki.mysqil.com/) →
 
 ![Mizuki Preview](./README.webp)
