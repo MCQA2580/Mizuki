@@ -1,5 +1,5 @@
-// Project data configuration file
-// Used to manage data for the project display page
+// 项目数据配置文件
+// 用于管理项目展示页面的数据
 
 export interface Project {
 	id: string;
@@ -24,7 +24,7 @@ export const projectsData: Project[] = [
 		id: "mizuki",
 		title: "Mizuki",
 		description:
-			"A next-gen Material Design 3 blog theme built with Astro, featuring i18n, dark mode, and responsive design.",
+			"基于 Astro 构建的下一代 Material Design 3 博客主题，具有国际化、深色模式和响应式设计。",
 		image: "/assets/projects/mizuki.webp",
 		category: "web",
 		techStack: ["Astro", "TypeScript", "Tailwind CSS", "Svelte"],
@@ -34,13 +34,13 @@ export const projectsData: Project[] = [
 		startDate: "2024-01-01",
 		endDate: "2024-06-01",
 		featured: true,
-		tags: ["Blog", "Theme", "Open Source"],
+		tags: ["博客", "主题", "开源"],
 	},
 	{
 		id: "folkpatch",
 		title: "FolkPatch",
 		description:
-			"A kernel-level ROOT solution based on KernelPatch, with polished UI, APM module system, and KPM kernel module support.",
+			"基于 KernelPatch 的内核级 ROOT 解决方案，具有精致的 UI、APM 模块系统和 KPM 内核模块支持。",
 		image: "/assets/projects/folkpatch.webp",
 		category: "mobile",
 		techStack: ["Kotlin", "Rust", "C++", "Java"],
@@ -49,13 +49,13 @@ export const projectsData: Project[] = [
 		visitUrl: "https://fp.mysqil.com",
 		startDate: "2024-03-01",
 		featured: true,
-		tags: ["Android", "Root", "Kernel"],
+		tags: ["Android", "Root", "内核"],
 	},
 	{
 		id: "folktool",
 		title: "FolkTool",
 		description:
-			"A fast ROOT flashing tool for FolkPatch with a graphical interface and automated operations, simplifying the complex flashing process.",
+			"用于 FolkPatch 的快速 ROOT 刷入工具，具有图形界面和自动化操作，简化复杂的刷入过程。",
 		image: "",
 		category: "desktop",
 		techStack: ["Flutter", "Dart", "C++", "CMake"],
@@ -63,14 +63,14 @@ export const projectsData: Project[] = [
 		sourceCode: "https://github.com/matsuzaka-yuki/FolkTool",
 		startDate: "2026-02-01",
 		endDate: "2026-02-28",
-		tags: ["Android", "Tool", "Desktop"],
+		tags: ["Android", "工具", "桌面"],
 		showImage: false,
 	},
 	{
 		id: "folkadb",
 		title: "FolkADB",
 		description:
-			"A portable ADB/Fastboot tool written in C, featuring interactive CLI, Tab completion, drag-and-drop module installation, and Shizuku activation.",
+			"用 C 语言编写的便携式 ADB/Fastboot 工具，具有交互式 CLI、Tab 补全、拖放模块安装和 Shizuku 激活功能。",
 		image: "",
 		category: "desktop",
 		techStack: ["C"],
@@ -78,14 +78,14 @@ export const projectsData: Project[] = [
 		sourceCode: "https://github.com/matsuzaka-yuki/FolkADB",
 		startDate: "2025-06-01",
 		endDate: "2026-01-01",
-		tags: ["Android", "ADB", "CLI"],
+		tags: ["Android", "ADB", "命令行"],
 		showImage: false,
 	},
 	{
 		id: "folksplash",
 		title: "FolkSplash",
 		description:
-			"A web-based splash.img visualizer for OPPO/Realme/OnePlus devices, supporting unpack, preview, replace, and repack.",
+			"基于 Web 的 OPPO/Realme/OnePlus 设备 splash.img 可视化工具，支持解包、预览、替换和重新打包。",
 		image: "",
 		category: "web",
 		techStack: ["React", "TypeScript", "Vite", "Material-UI", "Zustand"],
@@ -94,12 +94,12 @@ export const projectsData: Project[] = [
 		visitUrl: "https://splash.mysqil.com",
 		startDate: "2025-09-01",
 		endDate: "2025-10-01",
-		tags: ["Android", "Tool", "Frontend"],
+		tags: ["Android", "工具", "前端"],
 		showImage: false,
 	},
 ];
 
-// Get project statistics
+// 获取项目统计
 export const getProjectStats = () => {
 	const total = projectsData.length;
 	const completed = projectsData.filter(
@@ -120,7 +120,7 @@ export const getProjectStats = () => {
 	};
 };
 
-// Get projects by category
+// 按类别获取项目
 export const getProjectsByCategory = (category?: string) => {
 	if (!category || category === "all") {
 		return projectsData;
@@ -128,12 +128,12 @@ export const getProjectsByCategory = (category?: string) => {
 	return projectsData.filter((p) => p.category === category);
 };
 
-// Get featured projects
+// 获取精选项目
 export const getFeaturedProjects = () => {
 	return projectsData.filter((p) => p.featured);
 };
 
-// Get all tech stacks
+// 获取所有技术栈
 export const getAllTechStack = () => {
 	const techSet = new Set<string>();
 	projectsData.forEach((project) => {
