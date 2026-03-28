@@ -112,7 +112,7 @@
 		"typescript-eslint": "^8.57.1"
 	},
 	"engines": {
-		"node": ">=22.12.0"
+		"node": ">=24.12.0"
 	},
 	"packageManager": "pnpm@10.22.0",
 	"pnpm": {
