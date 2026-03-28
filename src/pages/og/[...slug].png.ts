@@ -123,7 +123,7 @@ async function getImageBase64(imagePath: string): Promise<string | null> {
 		// 查找匹配的图片模块
 		for (const [path, module] of Object.entries(avatarModules)) {
 			if (path.includes(normalizedPath) || normalizedPath.includes(path.replace("/src/", ""))) {
-				const img = module as ImageMetadata;
+				const img = (module as { default: ImageMetadata }).default;
 				if (img.src) {
 					// 如果是本地路径，需要获取实际文件内容
 					if (img.src.startsWith("/")) {
@@ -146,7 +146,7 @@ async function getImageBase64(imagePath: string): Promise<string | null> {
 		// 对于 favicon，尝试从模块中获取
 		for (const [path, module] of Object.entries(faviconModules)) {
 			if (path.includes("favicon")) {
-				const img = module as ImageMetadata;
+				const img = (module as { default: ImageMetadata }).default;
 				if (img.src) {
 					return img.src;
 				}

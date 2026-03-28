@@ -1,9 +1,9 @@
 ---
-import { footerConfig, profileConfig, siteConfig } from "../../../config";
+import { profileConfig, siteConfig } from "../../../config";
 import { url } from "../../../utils/url-utils";
 
 const currentYear = new Date().getFullYear();
-const siteStartYear = new Date(siteConfig.siteStartDate).getFullYear();
+const siteStartYear = siteConfig.siteStartDate ? new Date(siteConfig.siteStartDate).getFullYear() : currentYear;
 const yearRange = siteStartYear === currentYear ? String(currentYear) : `${siteStartYear} - ${currentYear}`;
 ---
 
