@@ -33,7 +33,7 @@ import { remarkMermaid } from "./src/plugins/remark-mermaid.js";
 // https://astro.build/config
 export default defineConfig({
 	site: siteConfig.siteURL,
-	// base: "/Mizuki/", // Cloudflare Pages 使用根域名，不需要 base 路径
+	base: "/Mizuki", // GitHub Pages 使用 /Mizuki 作为 base 路径
 	trailingSlash: "always",
 
 	output: "static",

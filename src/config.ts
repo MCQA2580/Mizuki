@@ -26,7 +26,7 @@ const SITE_TIMEZONE = 8; //设置你的网站时区 from -12 to 12 default in UT
 export const siteConfig: SiteConfig = {
 	title: "Mizuki",
 	subtitle: "一个演示网站",
-	siteURL: "https://mizuki.pages.dev/", // Cloudflare Pages 默认域名，部署后可替换为自定义域名
+	siteURL: "https://mcqa2580.github.io/Mizuki/", // GitHub Pages 域名
 	siteStartDate: "2026-01-01", // 站点开始运行日期，用于站点统计组件计算运行天数
 
 	timeZone: SITE_TIMEZONE,
