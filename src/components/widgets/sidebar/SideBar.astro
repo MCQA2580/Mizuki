@@ -103,34 +103,7 @@ const tabletStickyComponents = widgetManager.getComponentsByPosition(
 				window.__mizukiSidebarSwupHooked = true;
 				window.swup.hooks.on("content:replace", () => {
 					setTimeout(() => {
-						const sidebar = document.getElementById("sidebar");
-						if (!sidebar) {
-							return;
-						}
-
-						const width = window.innerWidth;
-						let deviceType;
-						let hasComponents = false;
-						let showConfig = false;
-
-						if (width < breakpoints.mobile) {
-							deviceType = "mobile";
-							hasComponents = hasMobileComponents;
-							showConfig = mobileShowSidebar;
-						} else if (width < breakpoints.tablet) {
-							deviceType = "tablet";
-							hasComponents = hasTabletComponents;
-							showConfig = tabletShowSidebar;
-						} else {
-							deviceType = "desktop";
-							hasComponents = hasTabletComponents;
-							showConfig = desktopShowSidebar;
-						}
-
-						sidebar.style.setProperty(
-							`--sidebar-${deviceType}-display`,
-							showConfig && hasComponents ? "block" : "none",
-						);
+						this.updateResponsiveDisplay();
 					}, 100);
 				});
 			}
@@ -169,8 +142,17 @@ const tabletStickyComponents = widgetManager.getComponentsByPosition(
 		}
 	}
 
-	if (!window[SIDEBAR_MANAGER_KEY]) {
-		window[SIDEBAR_MANAGER_KEY] = true;
-		new SidebarManager();
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', () => {
+			if (!window[SIDEBAR_MANAGER_KEY]) {
+				window[SIDEBAR_MANAGER_KEY] = true;
+				new SidebarManager();
+			}
+		});
+	} else {
+		if (!window[SIDEBAR_MANAGER_KEY]) {
+			window[SIDEBAR_MANAGER_KEY] = true;
+			new SidebarManager();
+		}
 	}
 </script>

@@ -155,7 +155,7 @@ const hasBannerLink = !!siteConfig.banner.credit.url;
 					position: siteConfig.banner.position,
 				}}
 			>
-				(function () {
+				function initBannerImages() {
 					const getRandomImage = (images, storageKey) => {
 						if (Array.isArray(images)) {
 							if (images.length === 0) {return null;}
@@ -175,6 +175,7 @@ const hasBannerLink = !!siteConfig.banner.credit.url;
 					};
 
 					const container = document.getElementById("banner-single-container");
+					if (!container) return;
 
 					// 检查容器是否已有图片，避免在页面切换或缩放时重复创建
 					if (container.querySelector("img")) {
@@ -208,7 +209,13 @@ const hasBannerLink = !!siteConfig.banner.credit.url;
 						desktopImg.dataset.position = position;
 						container.appendChild(desktopImg);
 					}
-				})();
+				}
+
+				if (document.readyState === 'loading') {
+					document.addEventListener('DOMContentLoaded', initBannerImages);
+				} else {
+					initBannerImages();
+				}
 			</script>
 		</div>
 	)}
@@ -229,7 +236,7 @@ const hasBannerLink = !!siteConfig.banner.credit.url;
 	<!-- 轮播脚本：随机起始 + 帧收集 + Ken Burns + Crossfade + 触摸/鼠标事件 -->
 	{isCarouselEnabled && (
 		<script is:inline data-swup-ignore-script>
-			(function initBannerCarousel() {
+			function initBannerCarousel() {
 				var container = document.getElementById('banner-carousel');
 				if (!container) return;
 
@@ -523,7 +530,13 @@ const hasBannerLink = !!siteConfig.banner.credit.url;
 					container.removeEventListener('mouseleave', onMouseLeave);
 					isCrossfading = { mobile: false, desktop: false };
 				};
-			})();
+			}
+
+			if (document.readyState === 'loading') {
+				document.addEventListener('DOMContentLoaded', initBannerCarousel);
+			} else {
+				initBannerCarousel();
+			}
 		</script>
 	)}
 
