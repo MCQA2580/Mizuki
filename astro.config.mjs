@@ -33,9 +33,10 @@ import { remarkMermaid } from "./src/plugins/remark-mermaid.js";
 // https://astro.build/config
 const isVercel = !!process.env.VERCEL && process.env.VERCEL !== "";
 const isGitHubPages = !!process.env.GITHUB_ACTIONS;
+const isLocal = !isVercel && !isGitHubPages;
 export default defineConfig({
-	site: isVercel ? "https://nfq.dpdns.org/" : siteConfig.siteURL,
-	base: isVercel ? undefined : "/Mizuki", // Vercel 不需要 base 路径，GitHub Pages 使用 /Mizuki
+	site: isVercel ? "https://www.nfq.dpdns.org/" : siteConfig.siteURL,
+	base: isVercel ? undefined : (isGitHubPages ? "/Mizuki" : undefined), // Vercel 和本地开发不需要 base 路径，GitHub Pages 使用 /Mizuki
 	trailingSlash: "always",
 
 	output: "static",
