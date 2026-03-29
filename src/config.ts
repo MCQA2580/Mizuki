@@ -137,8 +137,8 @@ export const siteConfig: SiteConfig = {
 
 		waves: {
 			enable: true, // 是否启用水波纹效果（注意：此功能性能开销较大）
-			performanceMode: false, // 性能模式：减少动画复杂度(性能提升40%)
-			mobileDisable: false, // 移动端禁用
+			performanceMode: true, // 性能模式：减少动画复杂度(性能提升40%)
+			mobileDisable: true, // 移动端禁用
 		},
 
 		// PicFlow API支持(智能图片API)
@@ -163,6 +163,7 @@ export const siteConfig: SiteConfig = {
 		],
 			typewriter: {
 				enable: true, // 启用副标题打字机效果
+				mobileDisable: true, // 移动端禁用打字机效果以提升性能
 
 				speed: 100, // 打字速度（毫秒）
 				deleteSpeed: 50, // 删除速度（毫秒）
@@ -400,7 +401,7 @@ export const expressiveCodeConfig: ExpressiveCodeConfig = {
 };
 
 export const commentConfig: CommentConfig = {
-	enable: false, // 启用评论功能。当设置为 false 时，评论组件将不会显示在文章区域。
+	enable: true, // 启用评论功能。当设置为 false 时，评论组件将不会显示在文章区域。
 	system: "twikoo", // 评论系统选择: "twikoo" | "giscus"
 	twikoo: {
 		envId: "https://twikoo.vercel.app",
@@ -570,8 +571,10 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 
 	// 默认动画配置
 	defaultAnimation: {
-		// 是否启用默认动画
+		// 是否启用默认动画（移动端禁用以提升性能）
 		enable: true,
+		// 移动端禁用动画
+		mobileDisable: true,
 		// 基础延迟时间（毫秒）
 		baseDelay: 0,
 		// 递增延迟时间（毫秒），每个组件依次增加的延迟

@@ -193,6 +193,8 @@ export default defineConfig({
 			inlineStylesheets: "auto",
 			// 生产环境移除 console 和 debugger
 			minify: "esbuild",
+			// 进一步优化 chunk 大小
+			chunkSizeWarningLimit: 1000,
 			rollupOptions: {
 				onwarn(warning, warn) {
 					if (
@@ -207,6 +209,18 @@ export default defineConfig({
 					}
 					warn(warning);
 				},
+				output: {
+					// 手动代码分割
+					manualChunks: {
+						'astro-vendor': ['astro', 'astro-icon', 'astro-expressive-code'],
+						'ui-vendor': ['@swup/astro', 'svelte'],
+						'markdown-vendor': ['rehype-katex', 'remark-math'],
+					},
+					// 优化 chunk 命名
+					chunkFileNames: 'assets/chunks/[name]-[hash].js',
+					entryFileNames: 'assets/entry/[name]-[hash].js',
+					assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
+				},
 			},
 		},
 		// 生产环境移除 console.log 和 debugger
@@ -215,6 +229,10 @@ export default defineConfig({
 				process.env.NODE_ENV === "production"
 					? ["console", "debugger"]
 					: [],
+		},
+		// 优化依赖预构建
+		optimizeDeps: {
+			include: ['astro-icon', 'astro-expressive-code'],
 		},
 	},
 });
